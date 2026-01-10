@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>BDIV10 Network Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Top mobile bar -->
+  <div class="topbar" role="region" aria-label="Search and controls">
+    <button id="btnMenu" class="iconbtn" title="Open panel" aria-label="Open panel">☰</button>
+
+    <div class="searchwrap">
+      <input id="q" type="search" placeholder="Search feeder or transformer…" autocomplete="off" />
+      <div id="suggest" class="suggest" hidden></div>
+    </div>
+
+    <button id="btnLocate" class="iconbtn" title="Show my location" aria-label="Show my location">📍</button>
+  </div>
+
+  <!-- Bottom sheet -->
+  <div id="sheet" class="sheet" aria-label="Panel">
+    <div class="sheet-handle" id="sheetHandle" aria-label="Drag handle"></div>
+
+    <div class="sheet-content">
+      <div class="row">
+        <div class="chip">
+          <label class="switch">
+            <input id="feederOnly" type="checkbox" />
+            <span class="slider"></span>
+          </label>
+          <span class="chip-text">Feeder-only search</span>
+        </div>
+
+        <button id="btnZoomFeeder" class="btn" disabled>Zoom to feeder</button>
+      </div>
+
+      <div class="row">
+        <label class="field">
+          <span class="field-label">Feeder filter</span>
+          <select id="feederSelect">
+            <option value="">All feeders</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field-label">Basemap</span>
+          <select id="basemapSelect">
+            <option value="osm">OpenStreetMap</option>
+            <option value="carto">Carto Light</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="legendbox">
+        <div class="legend-title">Legend</div>
+        <div class="legend-item"><span class="swatch line"></span> MV line</div>
+        <div class="legend-item"><span class="swatch tx"></span> Transformer</div>
+        <div class="legend-note">Tip: tap a feature for details.</div>
+      </div>
+
+      <div class="resultsHeader">
+        <div class="resultsTitle">Results</div>
+        <div class="resultsMeta" id="resultsMeta">Type to search…</div>
+      </div>
+      <div id="results" class="results"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
